@@ -1,6 +1,7 @@
 package com.example.demo.integration;
 
 import org.junit.jupiter.api.DisplayName;
+import org.springframework.test.annotation.DirtiesContext;
 import tools.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * См. README — раздел «Что нужно сдать».
  */
 @AutoConfigureMockMvc
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 class RoleBasedAccessIntegrationTest extends AbstractIntegrationTest {
 
     @Autowired

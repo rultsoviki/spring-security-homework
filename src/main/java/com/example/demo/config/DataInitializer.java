@@ -1,10 +1,12 @@
 package com.example.demo.config;
 
-import com.example.demo.domain.User;
 import com.example.demo.domain.Role;
+import com.example.demo.domain.User;
 import com.example.demo.domain.vo.RoleName;
 import com.example.demo.repository.RoleRepository;
 import com.example.demo.repository.UserRepository;
+import jakarta.annotation.PostConstruct;
+import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.Set;
 
 @Configuration
+@AllArgsConstructor
 public class DataInitializer {
 
     @Bean

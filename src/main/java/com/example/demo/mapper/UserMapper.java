@@ -15,11 +15,12 @@ import java.util.stream.Collectors;
 public interface UserMapper {
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "userName",source = "name")
+    @Mapping(target = "userName",source = "username")
     User toEntity(UserRequest userRequest);
 
 
     @Mapping(target = "roles",source = "roles",qualifiedByName = "mapRolesToNames")
+    @Mapping(target = "username", source = "userName")
     UserResponse toResponse(User user);
 
     @Named("mapRolesToNames")

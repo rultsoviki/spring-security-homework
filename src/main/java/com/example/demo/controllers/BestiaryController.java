@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -31,15 +32,16 @@ public class BestiaryController {
     @PostMapping
     @PreAuthorize("hasAnyRole('MASTER', 'ADMIN')")
     public ResponseEntity<?> createEntry(@RequestBody Monster monster) {
-        var created = bestiaryService.create(monster);
-        if (created) {
-            return ResponseEntity.ok(monster);
+        var createdMonster = bestiaryService.create(monster);
+        if (createdMonster) {
+            return ResponseEntity
+                    .created(URI.create("/api/bestiary/" + monster.getId()))
+                    .body(createdMonster);
         } else {
             return ResponseEntity.status(HttpStatus.CONFLICT)
                     .body("Монстр с таким именем уже существует");
         }
     }
-
     @PutMapping("/{id}")
     @PreAuthorize("hasAnyRole('MASTER', 'ADMIN')")
     public Monster update(@PathVariable Long id, @RequestBody Monster monster) {

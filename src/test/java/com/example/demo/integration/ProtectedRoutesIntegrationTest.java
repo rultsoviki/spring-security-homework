@@ -1,6 +1,7 @@
 package com.example.demo.integration;
 
 import org.junit.jupiter.api.DisplayName;
+import org.springframework.test.annotation.DirtiesContext;
 import tools.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureMockMvc
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 class ProtectedRoutesIntegrationTest extends AbstractIntegrationTest {
 
     @Autowired

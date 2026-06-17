@@ -30,7 +30,7 @@ public class UserService {
 
     public UserResponse save(UserRequest userRequest) {
         var user = mapper.toEntity(userRequest);
-        if (!userRepository.existsByUserName(userRequest.name())) {
+        if (!userRepository.existsByUserName(userRequest.username())) {
 
             var password = user.getPassword();
             user.setPassword(passwordEncoder.encode(password));

@@ -3,6 +3,7 @@ package com.example.demo.config;
 
 import com.example.demo.security.CustomDetailService;
 import com.example.demo.service.JwtService;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,7 +38,11 @@ public class SecurityConfig {
                         .requestMatchers("/api/bestiary/**", "/api/dungeons").hasRole("MASTER")
                         .requestMatchers(HttpMethod.DELETE, "/api/players/**", "/api/bestiary/**")
                         .hasRole("ADMIN").anyRequest().authenticated()
-                )
+                ).exceptionHandling(ex -> ex
+                        .authenticationEntryPoint(
+                                (request, response, authException) ->
+                                        response.sendError(HttpServletResponse.SC_UNAUTHORIZED)
+                        ))
                 .addFilterBefore(jwtAuthentificationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }

@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.domain.Monster;
 import com.example.demo.repository.BestiaryRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class BestiaryService {
     }
 
     public Monster findById(Long id) {
-        return bestiaryRepository.findById(id).orElseThrow(() -> new RuntimeException("Такова монстра нету"));
+        return bestiaryRepository.findById(id) .orElseThrow(() -> new EntityNotFoundException("Монстр не найден"));
     }
 
     public boolean create(Monster monster) {

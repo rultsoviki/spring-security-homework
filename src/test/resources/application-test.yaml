@@ -1,7 +1,7 @@
 spring:
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -9,9 +9,9 @@ spring:
 
 app:
   jwt:
-    secret: test-secret-key-for-tests-only
-    access-token-ttl: 3600000
-    refresh-token-ttl: 86400000
+    secret: test-secret-key-for-tests-only-qqqqqqqqqqqqqqqq
+    access-token-ttl: 36000000000
+    refresh-token-ttl: 864000000000
 
 logging:
   level:

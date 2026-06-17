@@ -59,6 +59,7 @@ public class JwtAuthentificationFilter extends OncePerRequestFilter {
         }catch (Exception e){
             logger.error("Invalid JWT",e);
             writeInvalidTokenResponse(response);
+            return;
         }
         filterChain.doFilter(request, response);
     }

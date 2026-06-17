@@ -21,7 +21,7 @@ public class AuthService {
 
     public AuthResponse login(UserRequest userRequest) {
         var authentic = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(userRequest.name(),
+                new UsernamePasswordAuthenticationToken(userRequest.username(),
                         userRequest.password()));
 
         UserDetails userDetails = (UserDetails) authentic.getPrincipal();
