@@ -13,7 +13,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 public abstract class AbstractIntegrationTest {
 
     static final PostgreSQLContainer<?> POSTGRES = new PostgreSQLContainer<>("postgres:16-alpine")
-            .withDatabaseName("dragons_lair_test")
+            .withDatabaseName("test")
             .withUsername("test")
             .withPassword("test")
             .withReuse(true);

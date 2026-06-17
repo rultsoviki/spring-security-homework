@@ -1,14 +1,19 @@
 spring:
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: validate
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-    show-sql: false
+    show-sql: true
 
 app:
   jwt:
-    secret: test-secret-key-test-secret-key-test-secret-key-test-secret-key
+    secret: test-secret-key-for-tests-only
     access-token-ttl: 3600000
     refresh-token-ttl: 86400000
+
+logging:
+  level:
+    org.testcontainers: DEBUG
+    com.github.dockerjava: DEBUG
